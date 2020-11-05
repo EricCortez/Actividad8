@@ -50,54 +50,57 @@ public class Deck {
         }
     }
 
-    public void shuffle() {
+    public void shuffle() throws Exception  {
         System.out.println("Mezclando ");
 
       String shufle;
-        if (Baraja.size() <= 0){
-            System.out.println("El Deck esta vacio..");
-            //showMessageDialog("El Deck esta vacio..");
-           // mezcla=false;
-        }
-        else{
-            Collections.shuffle(Baraja);
-            System.out.println("Se mezcló el Deck");
-           // showMessageDialog("Se mezcló el Deck");
-           // mezcla=true;
-        }
+      try {
+          if (Baraja.size() <= 0) {
+              System.out.println("El Deck esta vacio..");
+
+              //showMessageDialog("El Deck esta vacio..");
+              // mezcla=false;
+          } else {
+              Collections.shuffle(Baraja);
+              System.out.println("Se mezcló el Deck");
+              // showMessageDialog("Se mezcló el Deck");
+              // mezcla=true;
+          }
+      }catch (Exception e){
+
+          System.out.println("el desck no se pudo mezclar");
+          System.out.println(e.getMessage());
+      }
 
 
 
     }
 
-    private void showMessageDialog(String s) {
-    }
 
-    public void head()  {
+
+    public void head()  throws  Exception{
         System.out.println("head");
+try {
 
-        System.out.println("primera carta "+ Baraja.get(1));
-        //showMessageDialog("primera carta "+ Baraja.get(1));
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Se elimino "+ Baraja.remove(1));
-       //showMessageDialog("Se elimino "+ Baraja.remove(1));
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Quedan:"+ Baraja.size()+"Cartas");
-        //showMessageDialog("Quedan:"+ Baraja.size()+"Cartas");
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    System.out.println("primera carta " + Baraja.get(1));
+    //showMessageDialog("primera carta "+ Baraja.get(1));
 
+    System.out.println("Se elimino " + Baraja.remove(1));
+    //showMessageDialog("Se elimino "+ Baraja.remove(1));
+
+}catch (Exception e){
+    System.out.println(e.getMessage());
+
+} finally {
+
+
+
+    System.out.println("Quedan:" + Baraja.size() + "Cartas");
+    //showMessageDialog("Quedan:"+ Baraja.size()+"Cartas");
+
+
+
+}
 //return Integer.parseInt("primera carta "+ Baraja.get(1)+"Se elimino "+ Baraja.remove(1)+"Quedan:"+ Baraja.size()+"Cartas");
     }
 
@@ -105,42 +108,45 @@ public class Deck {
 
         System.out.println("Pick ");
 
+try {
 
-        int R =(new Random().nextInt(51));
-        System.out.println("se removera "+ Baraja.get(R));
 
-        Baraja.remove(R);
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Quedan: "+ Baraja.size()+" Cartas");
+    int R = (new Random().nextInt(52));
+    System.out.println("se removera " + Baraja.get(R));
+
+    Baraja.remove(R);
+
+    System.out.println("Quedan: " + Baraja.size() + " Cartas");
 //return Integer.parseInt("carta a remover"+Baraja.get(R)+"cartas restantes"+ Baraja.size());
-
+}catch ( Exception e)
+{
+    System.out.println(e.getMessage());
+}
     }
 
-    public void hand()  {
+    public void hand()  throws  Exception {
 
         System.out.println("Hand ");
+try {
 
-for (int x=0;x<4;x++){
 
-        int R =(new Random().nextInt(Baraja.size()-x));
+for (int x=0;x<4;x++) {
 
-    System.out.println("se removera "+ Baraja.get(R));
+    int R = (new Random().nextInt(Baraja.size() - x));
 
-        Baraja.remove(R);
+    System.out.println("se removera " + Baraja.get(R));
 
-    System.out.println("Quedan:"+ Baraja.size()+"Cartas");
-    try {
-        Thread.sleep(500);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
+    Baraja.remove(R);
+
+    System.out.println("Quedan:" + Baraja.size() + "Cartas");
+}  }catch ( Exception e)
+{System.out.println(e.getMessage());}
+finally {
+
+
+}
 }
 
         //return Baraja.size();
     }
 
-}

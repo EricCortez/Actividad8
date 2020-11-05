@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class interfaaace {
 
-    public static void main (String[] args) throws InterruptedException {
+    public static void main (String[] args) throws Exception {
         Scanner entrada = new Scanner(System.in);
         Deck op = new Deck();
         int x=0;
@@ -14,10 +14,19 @@ public class interfaaace {
 
 
 switch (x) {
-    case 1: op.shuffle();
-    break;
+    case 1:
+        try {
+            op.shuffle();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        break;
     case 2:
-        op.head();
+        try {
+            op.head();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         break;
     case 3:
         op.pick();
@@ -25,6 +34,11 @@ switch (x) {
     case 4:
         op.hand();
         break;
+
+        case 5:
+        System.out.println(" Salir");
+        break;
+
     default: System.out.println(" opcion no valida");
 }}while (x!=5);
 
